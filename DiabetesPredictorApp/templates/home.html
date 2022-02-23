@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>   DIABETES Predictor</title>
+     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.btn{
+   background: #097dea;
+    background: linear-gradient(65deg, #0270d7 0, #0f8afd 100%);
+  border: none;
+  align:center;
+  text-align: center;
+  border-radius: 8px;
+  padding: 14px 40px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	text-align:center;
+	letter-spacing:1.2px;
+
+    background: #1d2026;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+
+
+}
+
+input {
+	width: 100%;
+	margin-bottom: 10px;
+	background: white;
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: black;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+
+}
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background: #1d2026;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+    </style>
+
+
+</head>
+<body>
+
+<div>
+    <h1 style="color: orange" >Predict Chances of Being Diabetic  based on Kaggle dataset using</h1>
+     <h2 style="color: white"> (POLYNOMIAL LINEAR REGRESSION MODEL 85% Accurate )</h2>
+     <h3 style="color: orange"> Enter the following values to predict !</h3>
+
+<div class="container">
+  <form action="{{ url_for('predict')}}"method="post">
+    <div class="row">
+      <div class="col-25">
+        <label style="color: white">Age</label>
+      </div>
+      <div class="col-75">
+        <input type="text" name="Age" placeholder="Age" required="required" />
+
+         </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label style="color: white" >Glucose</label>
+      </div>
+      <div class="col-75">
+      <input type="text" name="Glucose" placeholder="Glucose" required="required" />
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label style="color: white">Blood-Pressure</label>
+      </div>
+      <div class="col-75">
+       <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" />
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label style="color: white">BMI</label>
+      </div>
+      <div class="col-75">
+      <input type="text" name="BMI" placeholder="BMI" required="required" />
+
+      </div>
+    </div>
+
+   <button type="submit" style="color: white" class="btn">Predict</button>
+  </form>
+</div>
+
+
+ <br>
+   <br>
+
+  <div style="color: white">{{ prediction_text }}
+   </div>
+</div>
+
+</body>
+</html>
